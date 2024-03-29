@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.todo_eventMapper" >
+    <resultMap id="todo_eventMap" type="com.example.demo.entity.todo_event" >
+        <id property="id" column="id" />
+        <result property="title" column="title" />
+        <result property="user_id" column="user_id" />
+    </resultMap>
+    <select id="findPage" resultMap="todo_eventMap">
+        SELECT *
+        FROM todo_event
+    </select>
+    <select id="geteventByID" resultMap="todo_eventMap">
+        SELECT *
+        FROM todo_event
+            todo_event.id=#{id}
+    </select>
+    <delete id="deleteByID">
+        DELETE  todo_event
+        FROM todo_event
+        WHERE todo_event.id = #{id}
+    </delete>
+</mapper>
